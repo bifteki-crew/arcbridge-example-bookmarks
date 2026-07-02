@@ -1,0 +1,6 @@
+node_modules/
+.next/
+.arcbridge/index.db
+.arcbridge/index.db-wal
+.arcbridge/index.db-shm
+.arcbridge/proposals/

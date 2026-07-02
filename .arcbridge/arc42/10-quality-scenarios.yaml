@@ -1,0 +1,115 @@
+schema_version: 1
+last_updated: 2026-07-02T05:47:56.181Z
+quality_goals:
+  - id: security
+    priority: 1
+    description: Security is a priority for arcbridge-example-bookmarks
+  - id: performance
+    priority: 2
+    description: Performance is a priority for arcbridge-example-bookmarks
+  - id: accessibility
+    priority: 3
+    description: Accessibility is a priority for arcbridge-example-bookmarks
+  - id: maintainability
+    priority: 4
+    description: Maintainability is a priority for arcbridge-example-bookmarks
+scenarios:
+  - id: SEC-01
+    name: Auth on all API routes
+    category: security
+    priority: must
+    scenario: An unauthenticated request hits any API route that requires auth
+    expected: Returns 401 Unauthorized without leaking data
+    linked_code: []
+    linked_tests: []
+    linked_blocks: []
+    verification: automatic
+    status: untested
+  - id: SEC-03
+    name: Input validation on mutations
+    category: security
+    priority: must
+    scenario: A malformed or malicious payload is sent to any mutation endpoint
+    expected: Input is validated and rejected with a descriptive error
+    linked_code: []
+    linked_tests: []
+    linked_blocks: []
+    verification: automatic
+    status: untested
+  - id: SEC-02
+    name: No secrets in client bundles
+    category: security
+    priority: must
+    scenario: Client-side JavaScript bundle is analyzed
+    expected: No API keys, tokens, or secrets are found in client-side code
+    linked_code: []
+    linked_tests: []
+    linked_blocks: []
+    verification: automatic
+    status: untested
+  - id: PERF-02
+    name: API responses under 200ms
+    category: performance
+    priority: should
+    scenario: Any API endpoint is called under normal load
+    expected: p95 response time is under 200ms
+    linked_code: []
+    linked_tests: []
+    linked_blocks: []
+    verification: automatic
+    status: untested
+  - id: PERF-01
+    name: Initial page load under 3s
+    category: performance
+    priority: should
+    scenario: User loads the landing page on a 3G connection
+    expected: Largest Contentful Paint (LCP) is under 3 seconds
+    linked_code: []
+    linked_tests: []
+    linked_blocks: []
+    verification: semi-automatic
+    status: untested
+  - id: A11Y-01
+    name: WCAG 2.1 AA compliance
+    category: accessibility
+    priority: should
+    scenario: All pages are audited with axe-core
+    expected: No critical or serious accessibility violations
+    linked_code: []
+    linked_tests: []
+    linked_blocks: []
+    verification: semi-automatic
+    status: untested
+  - id: A11Y-02
+    name: Keyboard navigation
+    category: accessibility
+    priority: should
+    scenario: User navigates the entire application using only keyboard
+    expected: All interactive elements are reachable and operable via keyboard
+    linked_code: []
+    linked_tests: []
+    linked_blocks: []
+    verification: manual
+    status: untested
+  - id: MAINT-01
+    name: No circular dependencies
+    category: maintainability
+    priority: must
+    scenario: Dependency graph is analyzed
+    expected: No circular import chains exist
+    linked_code: []
+    linked_tests: []
+    linked_blocks: []
+    verification: automatic
+    status: untested
+  - id: MAINT-02
+    name: Test coverage on business logic
+    category: maintainability
+    priority: should
+    scenario: Test coverage report is generated
+    expected: Business logic modules have >80% line coverage
+    linked_code: []
+    linked_tests: []
+    linked_blocks: []
+    verification: automatic
+    status: untested

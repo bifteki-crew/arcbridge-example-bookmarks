@@ -1,0 +1,39 @@
+schema_version: 1
+phase_id: phase-3-polish
+tasks:
+  - id: task-3.1-error-handling
+    title: Implement comprehensive error handling
+    status: todo
+    quality_scenarios:
+      - SEC-01
+    acceptance_criteria:
+      - Error boundaries at route level
+      - Custom error.tsx and not-found.tsx pages
+      - API error responses standardized
+  - id: task-3.2-accessibility
+    title: Accessibility audit and fixes
+    status: todo
+    quality_scenarios:
+      - A11Y-01
+      - A11Y-02
+    acceptance_criteria:
+      - Keyboard navigation works for all interactive elements
+      - Screen reader compatible (ARIA labels, roles)
+      - WCAG 2.1 AA compliance verified
+  - id: task-3.3-performance
+    title: Performance optimization
+    status: todo
+    quality_scenarios:
+      - PERF-01
+    acceptance_criteria:
+      - Bundle size optimized (dynamic imports, tree shaking)
+      - Core Web Vitals meet thresholds (LCP < 2.5s)
+      - Server-side rendering verified for SEO pages
+  - id: task-3.4-deployment
+    title: Configure production deployment
+    status: todo
+    quality_scenarios: []
+    acceptance_criteria:
+      - Production build configuration verified
+      - Environment variables documented
+      - Deployment to Vercel/hosting configured

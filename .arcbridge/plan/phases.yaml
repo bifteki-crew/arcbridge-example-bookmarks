@@ -1,0 +1,38 @@
+schema_version: 1
+phases:
+  - id: phase-0-setup
+    name: Project Setup
+    phase_number: 0
+    status: planned
+    description: Initialize project structure, install dependencies, configure tooling
+    gate_requirements:
+      - Project builds successfully
+      - Dev server starts without errors
+      - Linting and formatting configured
+  - id: phase-1-foundation
+    name: Foundation
+    phase_number: 1
+    status: planned
+    description: Core layout, navigation, and shared components
+    gate_requirements:
+      - Root layout renders correctly
+      - Navigation works between pages
+      - Quality scenarios SEC-01, MAINT-01 verified
+  - id: phase-2-features
+    name: Core Features
+    phase_number: 2
+    status: planned
+    description: Implement the primary features of the application
+    gate_requirements:
+      - Core user flows work end-to-end
+      - Test coverage meets thresholds
+      - Performance budgets met
+  - id: phase-3-polish
+    name: Polish & Launch
+    phase_number: 3
+    status: planned
+    description: Error handling, accessibility, performance optimization, deployment
+    gate_requirements:
+      - All quality scenarios passing
+      - Accessibility audit passes
+      - Production deployment successful

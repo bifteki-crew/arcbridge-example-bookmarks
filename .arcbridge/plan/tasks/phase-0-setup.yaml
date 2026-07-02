@@ -1,0 +1,30 @@
+schema_version: 1
+phase_id: phase-0-setup
+tasks:
+  - id: task-0.1-init-nextjs
+    title: Initialize Next.js project
+    status: todo
+    building_block: app
+    quality_scenarios: []
+    acceptance_criteria:
+      - Next.js app created with App Router
+      - TypeScript configured in strict mode
+      - Project runs with `npm run dev`
+  - id: task-0.2-tooling
+    title: Configure development tooling
+    status: todo
+    quality_scenarios:
+      - MAINT-01
+    acceptance_criteria:
+      - ESLint configured with recommended rules
+      - Prettier configured for consistent formatting
+      - Git hooks set up for pre-commit checks
+  - id: task-0.3-testing
+    title: Set up testing infrastructure
+    status: todo
+    quality_scenarios:
+      - MAINT-02
+    acceptance_criteria:
+      - Vitest configured for unit tests
+      - Playwright configured for E2E tests
+      - Test scripts added to package.json

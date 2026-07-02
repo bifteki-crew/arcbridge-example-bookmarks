@@ -1,0 +1,21 @@
+{
+  "name": "arcbridge-example-bookmarks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A tiny Next.js bookmark manager used as an ArcBridge adoption example.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "arcbridge:sync": "npx arcbridge sync",
+    "arcbridge:drift": "npx arcbridge drift --reindex"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}

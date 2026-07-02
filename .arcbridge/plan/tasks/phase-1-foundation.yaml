@@ -1,0 +1,45 @@
+schema_version: 1
+phase_id: phase-1-foundation
+tasks:
+  - id: task-1.1-layout
+    title: Create root layout and navigation
+    status: todo
+    building_block: app
+    quality_scenarios:
+      - A11Y-01
+      - A11Y-02
+    acceptance_criteria:
+      - Root layout with metadata configured
+      - Navigation component with keyboard accessibility
+      - Responsive design for mobile and desktop
+  - id: task-1.2-shared-components
+    title: Build shared UI components
+    status: todo
+    building_block: components
+    quality_scenarios:
+      - A11Y-01
+    acceptance_criteria:
+      - Button, Input, and Card components created
+      - Components follow accessibility guidelines
+      - Component tests written
+  - id: task-1.3-api-client
+    title: Set up API client layer
+    status: todo
+    building_block: app
+    quality_scenarios: []
+    acceptance_criteria:
+      - API client module created with typed request/response interfaces
+      - Base URL and auth token handling configured
+      - Error handling standardized (network errors, API errors, validation
+        errors)
+      - Request/response types match the backend API contract
+      - Document the API contract approach in an ADR (e.g., OpenAPI-generated
+        types vs. manual types)
+  - id: task-1.4-document-decisions
+    title: Document architectural decisions as ADRs
+    status: todo
+    quality_scenarios: []
+    acceptance_criteria:
+      - ADR for each significant technology or pattern choice made in this phase
+      - ADRs include context, decision, and consequences
+      - ADRs linked to affected building blocks and code paths

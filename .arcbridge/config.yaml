@@ -1,0 +1,37 @@
+schema_version: 1
+project_name: arcbridge-example-bookmarks
+project_type: nextjs-app-router
+services:
+  - name: main
+    path: .
+    type: nextjs
+    tsconfig: tsconfig.json
+platforms:
+  - claude
+quality_priorities:
+  - security
+  - performance
+  - accessibility
+  - maintainability
+indexing:
+  include:
+    - src/**/*
+    - app/**/*
+  exclude:
+    - node_modules
+    - dist
+    - .next
+    - coverage
+  default_mode: fast
+  csharp_indexer: auto
+testing:
+  test_command: npx vitest run
+  timeout_ms: 60000
+drift:
+  ignore_paths: []
+metrics:
+  auto_record: false
+sync:
+  auto_detect_drift: true
+  drift_severity_threshold: warning
+  propose_updates_on: phase-complete
