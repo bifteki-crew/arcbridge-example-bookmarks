@@ -1,0 +1,78 @@
+section: building-blocks
+schema_version: 1
+last_synced: 2026-07-02T05:47:57.015Z
+blocks:
+  - id: bookmarks
+    name: Bookmarks
+    level: 1
+    code_paths:
+      - src/lib/bookmarks/
+    interfaces:
+      - db
+    quality_scenarios: []
+    adrs: []
+    responsibility: Bookmark domain model, in-memory storage, and API - create,
+      list, and persist bookmarks.
+    service: main
+  - id: components
+    name: Components
+    level: 1
+    code_paths:
+      - src/components/
+    interfaces:
+      - bookmarks
+      - search
+      - tags
+    quality_scenarios: []
+    adrs: []
+    responsibility: React UI components - bookmark list and card, tag filter, and search bar.
+    service: main
+  - id: search
+    name: Search
+    level: 1
+    code_paths:
+      - src/lib/search/
+    interfaces:
+      - bookmarks
+      - tags
+    quality_scenarios: []
+    adrs: []
+    responsibility: Search over bookmarks - query parsing, text/tag filtering, and
+      match highlighting.
+    service: main
+  - id: tags
+    name: Tags
+    level: 1
+    code_paths:
+      - src/lib/tags/
+    interfaces:
+      - db
+    quality_scenarios: []
+    adrs: []
+    responsibility: Tag domain model, in-memory storage, and API - create and list tags.
+    service: main
+  - id: db
+    name: Db
+    level: 1
+    code_paths:
+      - src/lib/db/
+    interfaces: []
+    quality_scenarios: []
+    adrs: []
+    responsibility: In-memory data-access layer and shared entity/schema helpers
+      used by the domain modules.
+    service: main
+  - id: app
+    name: App
+    level: 1
+    code_paths:
+      - src/app/
+    interfaces:
+      - bookmarks
+      - components
+      - tags
+    quality_scenarios: []
+    adrs: []
+    responsibility: Next.js App Router entry - root layout, home page, and the
+      /api/bookmarks and /api/tags routes.
+    service: main
