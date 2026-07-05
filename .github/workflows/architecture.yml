@@ -1,0 +1,17 @@
+# Drift gate from the ArcBridge Drift Check action — fails when code drifts
+# from the committed .arcbridge/ architecture model.
+# https://github.com/bifteki-crew/arcbridge/tree/main/action
+name: Architecture
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write   # only used for the sticky PR comment
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bifteki-crew/arcbridge/action@main   # pin to a release tag or commit SHA in real workflows
