@@ -49,3 +49,50 @@ Point your MCP-compatible agent (Claude Code, Copilot, Codex, Gemini, OpenCode)
 at this directory and it can query the building blocks, quality scenarios, and
 plan. See the [ArcBridge README](https://github.com/bifteki-crew/arcbridge) and
 the [adoption guide](https://github.com/bifteki-crew/arcbridge/blob/main/docs/adopting-existing-codebases.md).
+
+## Cross-boundary contract checks
+
+The app's UI talks to its own API routes over HTTP: the browser clients in
+[`src/lib/bookmarks/client.ts`](src/lib/bookmarks/client.ts) and
+[`src/lib/tags/client.ts`](src/lib/tags/client.ts) `fetch()` the routes in
+[`src/app/api/`](src/app/api). ArcBridge indexes both halves — the outbound
+`fetch` **call sites** and the exposed **routes** — and checks that every call
+hits an endpoint (and method) the app actually serves. On `main` they line up:
+
+```bash
+npx arcbridge drift --reindex   # No drift detected.
+```
+
+Break the contract and it's caught. Change the bookmarks client to call a URL
+or method the route doesn't expose:
+
+```ts
+// src/lib/bookmarks/client.ts
+export async function fetchBookmarks(): Promise<Bookmark[]> {
+  const res = await fetch("/api/bookmark");   // typo — route is /api/bookmarks
+  return res.json();
+}
+```
+
+```bash
+npx arcbridge drift --reindex
+# Found 1 drift issue(s):
+#   [WARN]  contract_violation: `src/lib/bookmarks/client.ts` calls
+#           `GET /api/bookmark` but no indexed service exposes that endpoint.
+```
+
+Or call a method the endpoint doesn't allow:
+
+```ts
+await fetch("/api/bookmarks", { method: "DELETE" });   // route serves GET, POST
+# → contract_violation: calls `DELETE /api/bookmarks` but the endpoint only allows GET, POST.
+```
+
+Open that change as a PR and the [Architecture workflow](.github/workflows/architecture.yml)
+posts the finding as a sticky comment — the break is caught in review, before it
+ships. In a monorepo the same check spans **separate** frontend and backend
+services (e.g. a Next.js app calling an ASP.NET/FastAPI/Gin API), where a
+renamed or removed endpoint would otherwise only surface at runtime.
+
+> Requires ArcBridge **≥ 0.12.0** (contract checks). The workflow tracks the
+> latest published CLI.
